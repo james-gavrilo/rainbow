@@ -9,24 +9,31 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
+@available(iOS 14.0, *)
+struct Provider: IntentTimelineProvider {
+  
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+      SimpleEntry(date: Date(), token: TokenINO.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
-        completion(entry)
-    }
+  func getSnapshot(for configuration: SelectTokenIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+    let entry = SimpleEntry(date: Date(), token: configuration.token!, priceChange: 0.0)
+    completion(entry)
+  }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: SelectTokenIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
+          let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+          
+          let tokenString = configuration.token!
+          
+          let priceChangePercent24H: Double! = CoinGeckoService.shared.getPriceData(token: "ethereum")?.marketData.priceChangePercentage24h
+          
+          let entry = SimpleEntry(date: entryDate, token: tokenString, priceChange: priceChangePercent24H)
             entries.append(entry)
         }
 
@@ -35,10 +42,14 @@ struct Provider: TimelineProvider {
     }
 }
 
+@available(iOS 14.0, *)
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let token: TokenINO
+    let priceChange: Double
 }
 
+@available(iOS 14.0, *)
 struct Rainbow_WidgetEntryView : View {
     var entry: Provider.Entry
 
@@ -82,7 +93,6 @@ struct Rainbow_WidgetEntryView : View {
                   .frame(width: 20, height: 20)
                   .shadow(color: .black.opacity(0.04), radius: 3, y: 3)
               }
-              
               Spacer()
               
               HStack {
@@ -91,7 +101,7 @@ struct Rainbow_WidgetEntryView : View {
                     Image(systemName: "arrow.up")
                       .font(.system(size: 18, weight: .heavy, design: .rounded))
                       .foregroundColor(Color.white)
-                    Text("4.82%")
+                    Text(String(format: "%f", entry.priceChange))
                       .font(.system(size: 18, design: .rounded))
                       .fontWeight(.heavy)
                       .foregroundColor(Color.white)
@@ -122,12 +132,13 @@ struct Rainbow_WidgetEntryView : View {
     }
 }
 
+@available(iOS 14.0, *)
 @main
 struct Rainbow_Widget: Widget {
     let kind: String = "Rainbow_Widget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+      IntentConfiguration(kind: kind, intent: SelectTokenIntent.self, provider: Provider()) { entry in
             Rainbow_WidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Price Widget")
@@ -135,9 +146,10 @@ struct Rainbow_Widget: Widget {
     }
 }
 
+@available(iOS 14.0, *)
 struct Rainbow_Widget_Previews: PreviewProvider {
     static var previews: some View {
-        Rainbow_WidgetEntryView(entry: SimpleEntry(date: Date()))
+      Rainbow_WidgetEntryView(entry: SimpleEntry(date: Date(), token: TokenINO.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

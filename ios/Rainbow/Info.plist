@@ -98,6 +98,11 @@
 			<string>One</string>
 		</dict>
 	</dict>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>IntentIntent</string>
+		<string>SelectTokenIntent</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFMono-Medium.otf</string>

@@ -15,7 +15,7 @@ const ADDITIONAL_ASSET_DATA_COINGECKO =
 const ADDITIONAL_ASSET_DATA_UNISWAP =
   'additionalAssetData/ADDITIONAL_ASSET_DATA_UNISWAP';
 const ADDITIONAL_ASSET_DATA_COINGECKO_IDS =
-  'additionalAssetData/ADDITIONAL_ASSET_DATA_COINGOCKO_IDS';
+  'additionalAssetData/ADDITIONAL_ASSET_DATA_COINGECKO_IDS';
 
 export type AdditionalDataCongecko = {
   description?: string;
