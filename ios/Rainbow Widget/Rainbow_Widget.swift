@@ -13,7 +13,7 @@ import SwiftUI
 struct Provider: IntentTimelineProvider {
   
     func placeholder(in context: Context) -> SimpleEntry {
-      SimpleEntry(date: Date(), token: TokenINO.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0)
+      SimpleEntry(date: Date(), token: Token.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0)
     }
 
   func getSnapshot(for configuration: SelectTokenIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -45,7 +45,7 @@ struct Provider: IntentTimelineProvider {
 @available(iOS 14.0, *)
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let token: TokenINO
+    let token: Token
     let priceChange: Double
 }
 
@@ -149,7 +149,7 @@ struct Rainbow_Widget: Widget {
 @available(iOS 14.0, *)
 struct Rainbow_Widget_Previews: PreviewProvider {
     static var previews: some View {
-      Rainbow_WidgetEntryView(entry: SimpleEntry(date: Date(), token: TokenINO.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0))
+      Rainbow_WidgetEntryView(entry: SimpleEntry(date: Date(), token: Token.init(identifier: "ethereum", display: "ethereum", pronunciationHint: "ethereum"), priceChange: 0.0))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

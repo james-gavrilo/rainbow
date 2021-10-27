@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 final class CoinGeckoService {
   static let shared = CoinGeckoService()
   

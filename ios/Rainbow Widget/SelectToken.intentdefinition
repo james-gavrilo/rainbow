@@ -7,20 +7,20 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
 	<key>INIntentDefinitionNamespace</key>
-	<string>4ZKX8X</string>
+	<string>xxKpmN</string>
 	<key>INIntentDefinitionSystemVersion</key>
 	<string>20G165</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13A233</string>
+	<string>12E507</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.0</string>
+	<string>12.5.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
 			<key>INIntentDescriptionID</key>
-			<string>QDQs5d</string>
+			<string>GlYZb5</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -37,15 +37,15 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Token</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>XB2q4E</string>
+					<string>3kcacb</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
 					<string>token</string>
 					<key>INIntentParameterObjectType</key>
-					<string>TokenINO</string>
+					<string>Token</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>4ZKX8X</string>
+					<string>xxKpmN</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -66,7 +66,7 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>There are ${count} options matching ‘${token}’.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>ZFSPQA</string>
+							<string>JPnSvc</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>DisambiguationIntroduction</string>
 						</dict>
@@ -76,14 +76,12 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>Just to confirm, you wanted ‘${token}’?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>4wrTGF</string>
+							<string>mtbktL</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Confirmation</string>
 						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
-					<true/>
-					<key>INIntentParameterSupportsSearch</key>
 					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>2</integer>
@@ -110,7 +108,7 @@
 			<key>INIntentTitle</key>
 			<string>Select Token</string>
 			<key>INIntentTitleID</key>
-			<string>O3HO67</string>
+			<string>CayrX7</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -121,13 +119,13 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Token INO</string>
+			<string>Token</string>
 			<key>INTypeDisplayNameID</key>
-			<string>50B7o6</string>
+			<string>BFlRMR</string>
 			<key>INTypeLastPropertyTag</key>
 			<integer>99</integer>
 			<key>INTypeName</key>
-			<string>TokenINO</string>
+			<string>Token</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>

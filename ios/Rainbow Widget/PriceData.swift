@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 struct PriceData: Codable {
   struct MarketData: Codable {
     struct CurrentPrice: Codable {
